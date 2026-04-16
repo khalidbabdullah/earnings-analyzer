@@ -18,7 +18,10 @@ def get_financials(ticker):
     income = stock.quarterly_financials.T
     cashflow = stock.quarterly_cashflow.T
     info = stock.info
-    eps = stock.earnings_dates
+    try:
+        eps = stock.earnings_dates
+    except Exception:
+        eps = None
     return income, cashflow, info, eps
 
 if ticker:
